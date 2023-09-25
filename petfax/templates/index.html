@@ -6,10 +6,23 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Welcome to PetFax</h1>
-  {% for pet in pets %}
-      <h2>{{ pet.pet_name }}</h2>
-      <img src="{{ pet.pet_photo }}" alt="Photo of pet"/>
-  {% endfor %}
+  <div class="container">
+    <H1>PetFax</H1>
+    <div class="callout">
+      Greetings to PetFax! Our mission revolves around being a no-kill shelter focused on securing warm and loving homes for our furry companions, all while sharing intriguing facts with the public.
+    </div>
+    <div class="pets-container">
+        {% for pet in pets %}
+            <div class="pet">
+                <H2>{{ pet.pet_name }}</H2>
+                <img src="{{ url_for('static', filename='assets/') }}{{pet.pet_photo}}"/>
+                <a href="/pets/{{ pet.pet_id }}">Learn more ⟩</a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="callout">
+        Share more facts! <a href="/facts/new">Submit</a>
+    </div>
+</div>
 </body>
 </html>
